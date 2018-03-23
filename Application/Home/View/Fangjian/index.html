@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="__PUBLIC__/bootstrap/js/jquery-1.11.2.min.js" ></script>
+    <script  src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
+    <link  type="text/css" rel="stylesheet"  href="__PUBLIC__/bootstrap/css/bootstrap.min.css"></link>
+  </head>
+  <body>
+  	<table class="table">
+  <caption>房间列表</caption>
+  <thead>
+    <tr>
+      <th>房号</th>
+      <th>类型</th>
+      <th>状态</th>
+      <th>价格</th>
+      <th>入住时间</th>
+      <th>应退房时间</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+	<foreach name="fangjian" item="v" >  
+	 <tr>
+      <td>{$v.code}</td>
+      <td>{$v.type}</td>
+      <td>{$v.station}</td>
+      <td>{$v.price}</td>
+      <td></td>
+      <td></td>
+      <td>
+      <if condition="$v['station']==0">
+      <a href="{:U('edit?code='.$v['code'])}">	<button  type="button" class="btn btn-default ruzhu" code="{$v.code}">入住</button></a>
+      <else/>
+        <a href="{:U('tuifang?code='.$v['code'])}"><button type="button" class="btn btn-default tuifang" code="{$v.code}">退房</button></a>
+         <a href="{:U('Kehu/index?code='.$v['code'])}"><button type="button" class="btn btn-default tuifang" code="{$v.code}">入住人员信息</button></a>
+      </if></td>
+    </tr>
+    </foreach>
+   
+   
+   </tbody>
+ </table>
+<script type="text/javascript">
+	/*$(".ruzhu").click(function(){
+		var code = $(this).attr("code");
+		$.ajax({
+			url:"edit",
+			type:"post",
+			data:{code:code},
+			dateType:"json",
+			success:function(){
+
+
+			}
+
+		});
+
+	})
+*/
+</script>
+  </body>
+</html>
